@@ -7,7 +7,7 @@ const Description = () => {
     const navigate=useNavigate()
 
     const handleStart = () => {
-        navigate('/cart');
+        navigate('/parts');
       };
   return (
     <Container>

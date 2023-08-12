@@ -1,20 +1,39 @@
 import { useState } from 'react'
-
+import monitor from './images/monitor.jpg'
+import keyboard from './images/keyboard.jpg'
+import mouse from './images/mouse.jpg'
+import CPU from './images/CPU.jpg'
+import Speaker from './images/Speaker.jpg'
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './App.css'
 import Description from './Components/Description/Description';
-import Cart from './Components/Cart/Cart';
+import PartsSelection from './Components/PartsSelection/PartsSelection';
 
 function App() {
- 
+  const [selectedParts, setSelectedParts] = useState([]);
+  const parts = [
+    { id: 1, name: 'Monitor', image: monitor },
+    { id: 2, name: 'Keyboard', image:keyboard },
+    { id: 3, name: 'Mouse', image:mouse },
+    { id: 4, name: 'CPU', image:CPU },
+    { id: 5, name: 'Speaker', image:Speaker },
+  ];
+
+  const handleSelectPart = (partId) => {
+    if (selectedParts.includes(partId)) {
+      setSelectedParts(selectedParts.filter(id => id !== partId));
+    } else {
+      setSelectedParts([...selectedParts, partId]);
+    }
+  };
 
   return (
     <Router>
       <div className="app">
         <Routes>
           <Route path="/" exact element={<Description/>} />
-          <Route path="/cart" element={<Cart/>} />
+          <Route path="/parts"element={ <PartsSelection selectedParts={selectedParts} onSelectPart={handleSelectPart} parts={parts} />} />
           </Routes>
       </div>
     </Router>
