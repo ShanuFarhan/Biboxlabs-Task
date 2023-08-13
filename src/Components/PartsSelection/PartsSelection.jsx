@@ -3,14 +3,7 @@ import { Card, CardContent, CardMedia, Checkbox, Container, Typography,Grid, But
 import {Link} from 'react-router-dom'
 const PartsSelection = ({parts,handleCheckbox }) => {
 
-  // const togglePartSelection = (partId) => {
-  //   setSelectedParts(prevSelected => (
-  //     prevSelected.includes(partId)
-  //       ? prevSelected.filter(id => id !== partId)
-  //       : [...prevSelected, partId]
-  //   ));
 
-  // };
   return (
     <Container>
     <Typography variant="h4" gutterBottom>
