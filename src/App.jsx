@@ -9,9 +9,26 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './App.css'
 import Description from './Components/Description/Description';
 import PartsSelection from './Components/PartsSelection/PartsSelection';
+import AssemblyScreen from './Components/AssemblyScreen/AssemblyScreen'
 
 function App() {
   const [selectedParts, setSelectedParts] = useState([]);
+
+  // const handleCheckbox = (parts) => {
+  //   if (selectedParts.includes(parts)) {
+  //     setSelectedParts(selectedParts.filter(p => p !== parts));
+  //   } else {
+  //     setSelectedParts([...selectedParts, parts]);
+  //   }
+    
+  // };
+ const handleCheckbox=(parts)=>{
+
+  setSelectedParts([...selectedParts, parts]);
+ 
+ }
+
+
   const parts = [
     { id: 1, name: 'Monitor', image: monitor },
     { id: 2, name: 'Keyboard', image:keyboard },
@@ -20,20 +37,17 @@ function App() {
     { id: 5, name: 'Speaker', image:Speaker },
   ];
 
-  const handleSelectPart = (partId) => {
-    if (selectedParts.includes(partId)) {
-      setSelectedParts(selectedParts.filter(id => id !== partId));
-    } else {
-      setSelectedParts([...selectedParts, partId]);
-    }
-  };
 
   return (
     <Router>
       <div className="app">
         <Routes>
           <Route path="/" exact element={<Description/>} />
-          <Route path="/parts"element={ <PartsSelection selectedParts={selectedParts} onSelectPart={handleSelectPart} parts={parts} />} />
+          <Route path="/parts" element={ <PartsSelection  parts={parts} handleCheckbox={handleCheckbox}/>} />
+          <Route
+            path="/assemble"
+            element={<AssemblyScreen selectedParts={selectedParts} handleCheckbox={handleCheckbox}/>}
+          />
           </Routes>
       </div>
     </Router>

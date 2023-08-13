@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container,Button} from '@mui/material';
+import { Container,Button, Typography} from '@mui/material';
 
 import pc from '../../images/pc.jpeg'
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +11,7 @@ const Description = () => {
       };
   return (
     <Container>
+        <Typography variant='h4'></Typography>
         <img src={pc} alt=""  />
         
         <Button variant="contained"

@@ -1,19 +1,28 @@
-import React from 'react'
-import { Card, CardContent, CardMedia, Checkbox, Container, Typography,Grid } from '@mui/material';
+import React,{useState} from 'react'
+import { Card, CardContent, CardMedia, Checkbox, Container, Typography,Grid, Button } from '@mui/material';
+import {Link} from 'react-router-dom'
+const PartsSelection = ({parts,handleCheckbox }) => {
 
-const PartsSelection = ({ selectedParts, onSelectPart, parts }) => {
+  // const togglePartSelection = (partId) => {
+  //   setSelectedParts(prevSelected => (
+  //     prevSelected.includes(partId)
+  //       ? prevSelected.filter(id => id !== partId)
+  //       : [...prevSelected, partId]
+  //   ));
+
+  // };
   return (
     <Container>
     <Typography variant="h4" gutterBottom>
       SELECT PARTS
     </Typography>
     <Grid container spacing={3}>
-      {parts.map((part) => (
+      {parts&&parts.map((part) => (
         <Grid item xs={6} sm={4} md={3} key={part.id} >
           <Card
             variant="outlined"
-            className={`part-card ${selectedParts.includes(part.id) ? 'selected' : ''}`}
-            onClick={() => onSelectPart(part.id)}
+            // className={`part-card ${selectedParts.includes(part.id) ? 'selected' : ''}`}
+           
           >
             <CardMedia
               component="img"
@@ -24,16 +33,25 @@ const PartsSelection = ({ selectedParts, onSelectPart, parts }) => {
             />
             <CardContent>
               <Typography  variant="h6">{part.name}</Typography>
-              <Checkbox
-                checked={selectedParts.includes(part.id)}
-                onChange={() => onSelectPart(part.id)}
+              {/* <Checkbox
+                
                 color="primary"
-              />
+              /> */}
+              <Button onClick={()=>handleCheckbox(part)} variant='contained'>ADD</Button>
             </CardContent>
           </Card>
         </Grid>
       ))}
     </Grid>
+    <Link
+        to={{
+          pathname: "/assemble"
+        }}
+      >
+        <Button  variant="contained" color="primary">
+          Continue
+        </Button>
+      </Link>
   </Container>
   )
 }
