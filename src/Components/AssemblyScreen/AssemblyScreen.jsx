@@ -1,27 +1,23 @@
 
 import React from 'react';
 import { Container, Typography, Grid, Paper, Divider, Button } from '@mui/material';
-import PartsAssembly from '../PartsAssembly/PartsAssembly';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const AssemblyScreen = ({ selectedParts}) => {
-  const navigate=useNavigate()
-  const handlesubmit=()=>{
-    navigate('/finalview')
-  }
+const AssemblyScreen = ({ selectedParts,assembled,handleAssembled}) => {
   return (
-      <Droppable droppableId='selectedparts'>
-      {(provided)=>(
-          <div ref={provided.innerRef}
-          {...provided.droppableProps}
-          >
+      
     <Container maxWidth="md" sx={{ paddingTop: 5 }}>
       <Typography variant="h4" gutterBottom>
         Selected Items
       </Typography>
       
       <Grid container spacing={2}>
+      <Droppable droppableId='selectedparts'>
+      {(provided)=>(
+          <div ref={provided.innerRef}
+          {...provided.droppableProps}
+          >
       <Paper style={{maxHeight: 300,maxWidth: 500, overflow: 'auto'}}>
         <Grid  item xs={6}>
           {selectedParts.map((item,index) => (
@@ -49,21 +45,36 @@ const AssemblyScreen = ({ selectedParts}) => {
           ))}
         </Grid>
         </Paper>
+        {provided.placeholder}
+    </div>
+          )}
+    </Droppable>
         <Divider orientation="vertical" flexItem />
-          
-        <Grid  item xs={6} sx={{ marginLeft: 70,marginTop:-40}}>
-          <PartsAssembly />
-          <Button onClick={handlesubmit} variant='contained'>Finish</Button>
+       
+        <Grid  item xs={6} sx={{ marginLeft: 70}}>
+        <Droppable droppableId='DroppedContainer'>
+        {(provided)=>(
+          <div ref={provided.innerRef}
+          {...provided.droppableProps}
+          >
+        <Container assembled={assembled} style={{border:'solid',height: 'auto' ,width: 'auto'}}>
+          <Typography  variant='h4'>Drag Here</Typography>
+         </Container>
+         {provided.placeholder}
+    </div>
+          )}
+    </Droppable>
+        <Link to={{
+          pathname: "/finalview"
+        }}> <Button onClick={handleAssembled} variant='contained'>Finish</Button></Link> 
         </Grid>
         
     
       </Grid>
+   
      
     </Container>
-    {provided.placeholder}
-    </div>
-          )}
-    </Droppable>
+    
     
   );
 };
