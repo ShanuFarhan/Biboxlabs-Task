@@ -57,8 +57,11 @@ const AssemblyScreen = ({ selectedParts,assembled,handleAssembled}) => {
           <div ref={provided.innerRef}
           {...provided.droppableProps}
           >
-        <Container assembled={assembled} style={{border:'solid',height: 'auto' ,width: 'auto'}}>
+        <Container  style={{border:'solid',height: 'auto' ,width: 'auto'}}>
           <Typography  variant='h4'>Drag Here</Typography>
+          {assembled.map((item)=>(
+            <img src={item.image} alt="" />
+          ))}
          </Container>
          {provided.placeholder}
     </div>

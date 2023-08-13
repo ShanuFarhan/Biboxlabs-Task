@@ -13,9 +13,7 @@ const PartsSelection = ({parts,handleCheckbox }) => {
       {parts&&parts.map((part) => (
         <Grid item xs={6} sm={4} md={3} key={part.id} >
           <Card
-            variant="outlined"
-            // className={`part-card ${selectedParts.includes(part.id) ? 'selected' : ''}`}
-           
+            variant="outlined"           
           >
             <CardMedia
               component="img"
