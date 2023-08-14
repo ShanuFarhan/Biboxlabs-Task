@@ -6,9 +6,9 @@ const FinalProduct = ({assembled}) => {
     <div>
       <h2>Final product</h2>
       {assembled && assembled.map((part)=>(
-        <div className="image">
+        <div className="image" style={{width: 'auto'}}>
           <CardMedia
-          style={{height: 200,width: 200}}
+          style={{marginLeft: 300,height: 200,width: 'auto'}}
             component="img"
             image={part.image}
             alt={part.name}

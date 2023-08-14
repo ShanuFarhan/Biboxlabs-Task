@@ -56,7 +56,7 @@ function App() {
     setSelectedParts([...selectedParts, parts]);
 
   }
-const handleAssembled=(selectedParts)=>{
+const handleAssembled=()=>{
   setAssembled([...assembled])
   console.log(assembled);
   

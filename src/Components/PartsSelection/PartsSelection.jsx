@@ -1,8 +1,11 @@
 import React,{useState} from 'react'
 import { Card, CardContent, CardMedia, Checkbox, Container, Typography,Grid, Button } from '@mui/material';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 const PartsSelection = ({parts,handleCheckbox }) => {
-
+  const navigate=useNavigate()
+const handleContinue=()=>{
+  navigate('/assemble')
+}
 
   return (
     <Container>
@@ -39,7 +42,7 @@ const PartsSelection = ({parts,handleCheckbox }) => {
           pathname: "/assemble"
         }}
       >
-        <Button  variant="contained" color="primary">
+        <Button onClick={handleContinue} variant="contained" color="primary">
           Continue
         </Button>
       </Link>
