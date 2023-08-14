@@ -5,8 +5,8 @@ const FinalProduct = ({assembled}) => {
   return (
     <div>
       <h2>Final product</h2>
-      {assembled && assembled.map((part)=>(
-        <div className="image" style={{width: 'auto'}}>
+      {assembled && assembled.map((part,index)=>(
+        <div className="image" style={{width: 'auto'}} key={index}>
           <CardMedia
           style={{marginLeft: 300,height: 200,width: 'auto'}}
             component="img"

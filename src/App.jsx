@@ -74,20 +74,20 @@ const handleAssembled=()=>{
   return (
     <DragDropContext onDragEnd={ondrag}>
 
-      <Router>
+    
         <div className="app">
           <Routes>
             <Route path="/" exact element={<Description />} />
-            <Route path="/parts" element={<PartsSelection parts={parts} handleCheckbox={handleCheckbox} />} />
+            <Route path="/parts" exact element={<PartsSelection parts={parts} handleCheckbox={handleCheckbox} />} />
 
             <Route
-              path="/assemble"
+              path="/assemble" exact
               element={<AssemblyScreen assembled={assembled} handleAssembled={handleAssembled} parts={parts} selectedParts={selectedParts} handleCheckbox={handleCheckbox} />}
             />
             <Route path='/finalview' element={<FinalProduct assembled={assembled} />} />
           </Routes>
         </div>
-      </Router>
+    
     </DragDropContext>
   )
 }

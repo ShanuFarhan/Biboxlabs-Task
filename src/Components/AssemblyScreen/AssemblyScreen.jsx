@@ -59,8 +59,8 @@ const AssemblyScreen = ({ selectedParts,assembled,handleAssembled}) => {
           >
         <Container  style={{border:'solid',height: '400px' ,width: 'auto'}}>
           <Typography  variant='h4'>Drag Here</Typography>
-          {assembled.map((item)=>(
-            <img src={item.image} alt="" style={{width: 100}} />
+          {assembled.map((item,index)=>(
+            <img src={item.image} alt="" style={{width: 100}} key={index} />
           ))}
          </Container>
          {provided.placeholder}
